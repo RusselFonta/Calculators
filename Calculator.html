@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Calculator.css">
+    <script src="Calculator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <div class="Inputresult" id="display"></div>
+        
+        <div class="btnsection">
+            <button type="button" class="operator" onclick="inputOperator('%')"> % </button>
+            <button type="button" class="action" onclick="clearScreen()"> AC </button>
+            <button type="button" class="action" onclick="backspace()"> C </button>
+            <button type="button" class="operator" onclick="inputOperator('/')"> / </button>
+        </div>
+        
+
+        <div class="btnsection">
+            <button type="button" class="operand" onclick="inputNumber('7')"> 7 </button>
+            <button type="button" class="operand" onclick="inputNumber('8')"> 8 </button>
+            <button type="button" class="operand" onclick="inputNumber('9')"> 9 </button>
+            <button type="button" class="operator" onclick="inputOperator('*')"> * </button>
+        </div>
+        
+       
+        <div class="btnsection">
+            <button type="button" class="operand" onclick="inputNumber('4')"> 4 </button>
+            <button type="button" class="operand" onclick="inputNumber('5')"> 5 </button>
+            <button type="button" class="operand" onclick="inputNumber('6')"> 6 </button>
+            <button type="button" class="operator" onclick="inputOperator('-')"> - </button>
+        </div>
+        
+       
+        <div class="btnsection">
+            <button type="button" class="operand" onclick="inputNumber('1')"> 1 </button>
+            <button type="button" class="operand" onclick="inputNumber('2')"> 2 </button>
+            <button type="button" class="operand" onclick="inputNumber('3')"> 3 </button>
+            <button type="button" class="operator" onclick="inputOperator('+')"> + </button>
+        </div>
+        
+        <div class="btnsection">
+            <button type="button" class="action" onclick="toggleSign()"> + / - </button>
+            <button type="button" class="operand" onclick="inputNumber('0')"> 0 </button>
+            <button type="button" class="operand" onclick="inputDecimal()"> . </button>
+            <button type="button" class="equals" onclick="calculate()"> = </button>
+        </div>
+    </div>
+
+</body>
+</html>
