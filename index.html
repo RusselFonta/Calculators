@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="stylesheet" href="Calculator.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Calculator</h1>
-        <div class="inputresult" id="display"></div>
+        <div class="inputresult" id="display">0</div>
         
         <div class="btnsection">
-            <button type="button" class="operator" onclick="inputOperator('%')"> % </button>
+            <button type="button" class="operator" onclick=""percentage()> % </button>
             <button type="button" class="action" onclick="clearScreen()"> AC </button>
             <button type="button" class="action" onclick="backspace()"> C </button>
             <button type="button" class="operator" onclick="inputOperator('/')"> / </button>
@@ -46,9 +46,9 @@
             <button type="button" class="action" onclick="toggleSign()"> + / - </button>
             <button type="button" class="operand" onclick="inputNumber('0')"> 0 </button>
             <button type="button" class="operand" onclick="inputDecimal()"> . </button>
-            <button type="button" class="equals" onclick="calculate()"> = </button>
+            <button type="button" class="equals" onclick="Calculator()"> = </button>
         </div>
     </div>
-<script src="Calculator.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
