@@ -72,7 +72,7 @@ function inputOperator (operator) {
 }
 
 // Function to evaluate expression safely
-function calculate () {
+function calculator () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.textContent
 
