@@ -9,16 +9,22 @@ function inputNumber (number) {
   }
 }
 
-// Function to handle input clearing
+// Function to handle input clearing - reset back to "0"
 function clearScreen () {
   const displayScreen = document.getElementById('display')
-  displayScreen.textContent = ''
+  displayScreen.textContent = '0'
 }
 
 // Function to handle last character removal
 function backspace () {
   const displayScreen = document.getElementById('display')
-  displayScreen.textContent = displayScreen.textContent.slice(0, -1)
+  const currentContent = displayScreen.textContent
+
+  if (currentContent.length <= 1 || currentContent === 'Erreur') {
+    displayScreen.textContent = '0'
+  } else {
+    displayScreen.textContent = currentContent.slice(0, -1)
+  }
 }
 
 // Function to handle decimal entry per operand
