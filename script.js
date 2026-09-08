@@ -2,7 +2,7 @@
 function inputNumber (number) {
   const displayScreen = document.getElementById('display')
 
-  if (displayScreen.textContent === '0') {
+  if (displayScreen.textContent === '0' || displayScreen.textContent === 'Erreur') {
     displayScreen.textContent = number
   } else {
     displayScreen.textContent += number
@@ -32,6 +32,11 @@ function inputDecimal () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.textContent
 
+  if (currentContent === 'Erreur') {
+    displayScreen.textContent = '0.'
+    return
+  }
+
   const segments = currentContent.split(/[\+\-\*\/]/)
   const currentNumber = segments[segments.length - 1]
 
@@ -40,19 +45,34 @@ function inputDecimal () {
   }
 }
 
-// Function to handle toggle between positive and negative values
+// Function to handle toggle between positive and negative values for current operand
 function toggleSign () {
   const displayScreen = document.getElementById('display')
-  const negConversion = displayScreen.textContent * -1
-  displayScreen.textContent = negConversion
+  const currentContent = displayScreen.textContent
+
+  if (currentContent === 'Erreur' || currentContent === '0') return
+
+  try {
+    const result = new Function(`return (${currentContent}) * -1`)()
+    displayScreen.textContent = result
+  } catch (error) {
+    displayScreen.textContent = 'Erreur'
+  }
 }
 
-// Function to handle percentage calculations
+// Function to handle percentage calculations on current value
 function percentage () {
   const displayScreen = document.getElementById('display')
-  const numConversion = parseFloat(displayScreen.textContent)
-  const percent = numConversion / 100
-  displayScreen.textContent = percent
+  const currentContent = displayScreen.textContent
+
+  if (currentContent === 'Erreur' || currentContent === '0') return
+
+  try {
+    const result = new Function(`return (${currentContent}) / 100`)()
+    displayScreen.textContent = result
+  } catch (error) {
+    displayScreen.textContent = 'Erreur'
+  }
 }
 
 // Function to handle operator entry
@@ -61,7 +81,13 @@ function inputOperator (operator) {
   const currentContent = displayScreen.textContent
   const lastChar = currentContent.slice(-1)
 
-  // Prevent starting with non-minus operators if screen is empty
+  if (currentContent === 'Erreur') {
+    if (operator === '-') {
+      displayScreen.textContent = '-'
+    }
+    return
+  }
+
   if (currentContent === '' || currentContent === '0') {
     if (operator === '-') {
       displayScreen.textContent = operator
@@ -69,7 +95,6 @@ function inputOperator (operator) {
     return
   }
 
-  // Replace operator if last character is already an operator
   if (['+', '-', '*', '/'].includes(lastChar)) {
     displayScreen.textContent = currentContent.slice(0, -1) + operator
   } else {
@@ -77,18 +102,24 @@ function inputOperator (operator) {
   }
 }
 
-// Function to evaluate expression safely
 function calculator () {
   const displayScreen = document.getElementById('display')
-  const currentContent = displayScreen.textContent
+  let currentContent = displayScreen.textContent.trim()
+
+  if (currentContent === 'Erreur' || !currentContent) return
+
+  if (['+', '-', '*', '/'].includes(currentContent.slice(-1))) {
+    currentContent = currentContent.slice(0, -1)
+  }
 
   try {
     const result = new Function(`return ${currentContent}`)()
 
-    if (result === Infinity || isNaN(result)) {
+    if (result === Infinity || isNaN(result) || result === -Infinity) {
       displayScreen.textContent = 'Erreur'
     } else {
-      displayScreen.textContent = result
+      
+      displayScreen.textContent = Number(result.toFixed(8))
     }
   } catch (error) {
     displayScreen.textContent = 'Erreur'
