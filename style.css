@@ -1,58 +1,59 @@
 body {
-  font-family: 'Times New Roman', Times, serif;
   background-color: #f0f0f0;
+  font-family: "Times New Roman", Times, serif;
   margin: 0;
   padding: 0 100px;
 }
 
 .container {
+  background-color: #a7a6a6;
+  border: 2px solid #333333;
   border-radius: 20px;
-  border: 2px solid #333;
-  text-align: center;
-  margin-top: 60px;
-  padding: 20px;
-  background-color: rgb(167, 166, 166);
-  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 60px;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
 }
 
 h1 {
-  color: white;
+  color: #ffffff;
   font-size: 40px;
   margin-top: 0;
 }
 
 .inputresult {
-  border: 2px solid #333;
-  background-color: #333; 
-  color: #fff; 
-  height: 70px;
-  margin-bottom: 20px; 
+  background-color: #333333;
+  border: 2px solid #333333;
   border-radius: 10px;
+  color: #ffffff;
   font-size: 32px;
-  line-height: 70px; 
-  text-align: right;
+  height: 70px;
+  line-height: 70px;
+  margin-bottom: 20px;
   padding-right: 20px;
+  text-align: right;
 }
 
 .btnsection {
   display: flex;
-  justify-content: space-between; 
-  margin-bottom: 15px; 
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 button {
-  width: 75px;
-  height: 50px;
+  background-color: #f0f0f0;
+  border: 1px solid #999999;
   border-radius: 10px;
-  border: 1px solid #999;
+  cursor: pointer;
   font-size: 18px;
   font-weight: bold;
-  cursor: pointer;
-  background-color: #f0f0f0;
+  height: 50px;
   transition: background-color 0.2s;
+  width: 75px;
 }
-button:hover{
+
+button:hover {
   background-color: #7c7c7c;
 }

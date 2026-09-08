@@ -1,8 +1,9 @@
+/* global inputNumber, clearScreen, backspace, inputDecimal, toggleSign, percentage, inputOperator, calculate */
 // Function to handle numeric input
 function inputNumber (number) {
   const displayScreen = document.getElementById('display')
 
-  if (displayScreen.value === '0' || displayScreen.value === 'Erreur') {
+  if (displayScreen.value === '0' || displayScreen.value === 'Error') {
     displayScreen.value = number
   } else {
     displayScreen.value += number
@@ -20,7 +21,7 @@ function backspace () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.value
 
-  if (currentContent.length <= 1 || currentContent === 'Erreur') {
+  if (currentContent.length <= 1 || currentContent === 'Error') {
     displayScreen.value = '0'
   } else {
     displayScreen.value = currentContent.slice(0, -1)
@@ -32,12 +33,12 @@ function inputDecimal () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.value
 
-  if (currentContent === 'Erreur') {
+  if (currentContent === 'Error') {
     displayScreen.value = '0.'
     return
   }
 
-  const segments = currentContent.split(/[\+\-\*\/]/)
+  const segments = currentContent.split(/[+\-*/]/)
   const currentNumber = segments[segments.length - 1]
 
   if (!currentNumber.includes('.')) {
@@ -45,12 +46,12 @@ function inputDecimal () {
   }
 }
 
-// Function to handle toggle between positive and negative values for current operand
+// Function to handle toggle between positive and negative values
 function toggleSign () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.value
 
-  if (currentContent === 'Erreur' || currentContent === '0') return
+  if (currentContent === 'Error' || currentContent === '0') return
 
   try {
     const result = new Function(`return (${currentContent}) * -1`)()
@@ -60,18 +61,18 @@ function toggleSign () {
   }
 }
 
-// Function to handle percentage calculations on current value
+// Function to handle percentage calculations
 function percentage () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.value
 
-  if (currentContent === 'Erreur' || currentContent === '0') return
+  if (currentContent === 'Error' || currentContent === '0') return
 
   try {
     const result = new Function(`return (${currentContent}) / 100`)()
     displayScreen.value = result
   } catch (error) {
-    displayScreen.value = 'Erreur'
+    displayScreen.value = 'Error'
   }
 }
 
@@ -81,7 +82,7 @@ function inputOperator (operator) {
   const currentContent = displayScreen.value
   const lastChar = currentContent.slice(-1)
 
-  if (currentContent === 'Erreur') {
+  if (currentContent === 'Error') {
     if (operator === '-') {
       displayScreen.value = '-'
     }
@@ -102,12 +103,11 @@ function inputOperator (operator) {
   }
 }
 
-// Function to evaluate expression safely (renamed to match onclick="calculate()")
 function calculate () {
   const displayScreen = document.getElementById('display')
   let currentContent = displayScreen.value.trim()
 
-  if (currentContent === 'Erreur' || !currentContent) return
+  if (currentContent === 'Error' || !currentContent) return
 
   if (['+', '-', '*', '/'].includes(currentContent.slice(-1))) {
     currentContent = currentContent.slice(0, -1)
@@ -117,11 +117,11 @@ function calculate () {
     const result = new Function(`return ${currentContent}`)()
 
     if (result === Infinity || isNaN(result) || result === -Infinity) {
-      displayScreen.value = 'Erreur'
+      displayScreen.value = 'Error'
     } else {
       displayScreen.value = Number(result.toFixed(8))
     }
   } catch (error) {
-    displayScreen.value = 'Erreur'
+    displayScreen.value = 'Error'
   }
 }
