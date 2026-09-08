@@ -53,7 +53,7 @@ To clone and run this project locally, execute the following commands in your te
 
 ~~~bash
 # Clone the repository
-git clone https://github.com/RusselFonta/Weather-App.git
+git clone https://github.com/RusselFonta/Calculators.git
 
 # Navigate into the project directory
 cd calculator
