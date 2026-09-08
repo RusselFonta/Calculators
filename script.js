@@ -1,4 +1,3 @@
-/* global inputNumber, clearScreen, backspace, inputDecimal, toggleSign, percentage, inputOperator, calculate */
 // Function to handle numeric input
 function inputNumber (number) {
   const displayScreen = document.getElementById('display')
