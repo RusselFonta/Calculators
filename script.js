@@ -56,7 +56,7 @@ function toggleSign () {
     const result = new Function(`return (${currentContent}) * -1`)()
     displayScreen.value = result
   } catch (error) {
-    displayScreen.value = 'Erreur'
+    displayScreen.value = 'Error'
   }
 }
 
