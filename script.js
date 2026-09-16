@@ -14,19 +14,19 @@ function updateDisplay(value) {
     display.style.fontSize = '64px';
   }
   
+  display.scrollLeft = display.scrollWidth;
 }
 
 // Function to handle numeric input
 function inputNumber (number) {
   const displayScreen = document.getElementById('display')
+  const currentValue = displayScreen.value
 
-  if (displayScreen.value === '0' || displayScreen.value === 'Error') {
-    displayScreen.value = number
+  if (currentValue.value === '0' || currentValue.value === 'Error') {
+   updateDisplay(number)
   } else {
-    displayScreen.value += number
+   updateDisplay(currentValue + number)
   }
-
-  updateDisplay(va)
 }
 
 // Function to handle input clearing - reset back to "0"
