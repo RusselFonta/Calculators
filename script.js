@@ -1,3 +1,21 @@
+function updateDisplay(value) {
+  const display = document.getElementById('display');
+  display.value = value;
+  
+  const length = value.length;
+  
+  if (length > 12) {
+    display.style.fontSize = '32px';
+  } else if (length > 9) {
+    display.style.fontSize = '40px';
+  } else if (length > 6) {
+    display.style.fontSize = '50px';
+  } else {
+    display.style.fontSize = '64px';
+  }
+  
+}
+
 // Function to handle numeric input
 function inputNumber (number) {
   const displayScreen = document.getElementById('display')
@@ -7,6 +25,8 @@ function inputNumber (number) {
   } else {
     displayScreen.value += number
   }
+
+  updateDisplay(va)
 }
 
 // Function to handle input clearing - reset back to "0"
