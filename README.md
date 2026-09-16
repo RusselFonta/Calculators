@@ -76,7 +76,7 @@ git checkout feature/Calculator
 
 - **State Tracking:** Managing global variables to track the current input, previous input, and the active mathematical operator
 - **Error handling:** Using try and catch to trap any error produced and improve error analysis by looking at the code and and thinking about the possible error that will occur.
-- **Handling UI Timing:** Ensuring long number dynamically scale down instead of breaking the css container layout.
+- **Handling UI Timing:** Ensuring long number dynamically scale down instead of breaking the CSS container layout.
 
 ---
 
