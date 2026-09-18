@@ -1,8 +1,9 @@
 function updateDisplay(value) {
   const display = document.getElementById('display');
-  display.value = value;
+  const ConvertToString = String(value);
+  display.value = ConvertToString;
   
-  const length = value.length;
+  const length = ConvertToString.length;
   
   if (length > 12) {
     display.style.fontSize = '32px';
@@ -23,16 +24,15 @@ function inputNumber (number) {
   const currentValue = displayScreen.value
 
   if (currentValue.value === '0' || currentValue.value === 'Error') {
-   updateDisplay(number)
+   updateDisplay(String(number))
   } else {
-   updateDisplay(currentValue + number)
+   updateDisplay(currentValue + String(number))
   }
 }
 
 // Function to handle input clearing - reset back to "0"
 function clearScreen () {
-  const displayScreen = document.getElementById('display')
-  displayScreen.value = '0'
+  updateDisplay('0')
 }
 
 // Function to handle last character removal
@@ -41,9 +41,9 @@ function backspace () {
   const currentContent = displayScreen.value
 
   if (currentContent.length <= 1 || currentContent === 'Error') {
-    displayScreen.value = '0'
+    updateDisplay('0')
   } else {
-    displayScreen.value = currentContent.slice(0, -1)
+    updateDisplay(currentContent.slice(0, -1));
   }
 }
 
@@ -138,9 +138,9 @@ function calculate () {
     if (result === Infinity || isNaN(result) || result === -Infinity) {
       displayScreen.value = 'Error'
     } else {
-      displayScreen.value = Number(result.toFixed(8))
+      updateDisplay(Number((result.toFixed(8))))
     }
   } catch (error) {
-    displayScreen.value = 'Error'
+    updateDisplay('Error')
   }
 }
