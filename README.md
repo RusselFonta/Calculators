@@ -75,7 +75,7 @@ git checkout feature/Calculator
 
 ## 📚 What I Learned
 
-- **Regex Splitting:** Using regular expression splitters (/[+\-*/]/) to isolate individual operands from a continuous mathematical expression string.
+- **Regular expression Splitting:** Using regular expression splitters (/[+\-*/]/) to isolate individual operands from a continuous mathematical expression string.
 - **Error handling:** Using isolated Function executions to evaluate mathematical string operations safely within try/catch blocks.
 - **Handling UI Timing:** Managing system states (Error, 0, unclosed inputs) to ensure user clicks do not produce unhandled JS exceptions
 
