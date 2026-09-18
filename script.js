@@ -23,7 +23,7 @@ function inputNumber (number) {
   const displayScreen = document.getElementById('display')
   const currentValue = displayScreen.value
 
-  if (currentValue.value === '0' || currentValue.value === 'Error') {
+  if (currentValue === '0' || currentValue === 'Error') {
    updateDisplay(String(number))
   } else {
    updateDisplay(currentValue + String(number))
