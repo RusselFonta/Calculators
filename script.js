@@ -103,23 +103,24 @@ function inputOperator (operator) {
 
   if (currentContent === 'Error') {
     if (operator === '-') {
-      displayScreen.value = '-'
+      updateDisplay('-')
     }
     return
   }
 
-  if (currentContent === '' || currentContent === '0') {
+  if (currentContent === '') {
     if (operator === '-') {
-      displayScreen.value = operator
+      updateDisplay('-')
     }
     return
   }
 
   if (['+', '-', '*', '/'].includes(lastChar)) {
     displayScreen.value = currentContent.slice(0, -1) + operator
-  } else {
-    displayScreen.value += operator
-  }
+    return
+  } 
+    updateDisplay(currentContent + operator)
+  
 }
 
 function calculate () {
