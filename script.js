@@ -53,7 +53,7 @@ function inputDecimal () {
   const currentContent = displayScreen.value
 
   if (currentContent === 'Error') {
-    displayScreen.value = '0.'
+    updateDisplay('0.')
     return
   }
 
@@ -61,7 +61,7 @@ function inputDecimal () {
   const currentNumber = segments[segments.length - 1]
 
   if (!currentNumber.includes('.')) {
-    displayScreen.value += '.'
+    updateDisplay(currentContent + '.')
   }
 }
 
@@ -70,13 +70,13 @@ function toggleSign () {
   const displayScreen = document.getElementById('display')
   const currentContent = displayScreen.value
 
-  if (currentContent === 'Error' || currentContent === '0') return
+  if (currentContent === 'Error' || currentContent === '0' || !currentContent) return
 
   try {
     const result = new Function(`return (${currentContent}) * -1`)()
-    displayScreen.value = result
+    updateDisplay(String(result))
   } catch (error) {
-    displayScreen.value = 'Error'
+    updateDisplay('Error')
   }
 }
 
@@ -89,9 +89,9 @@ function percentage () {
 
   try {
     const result = new Function(`return (${currentContent}) / 100`)()
-    displayScreen.value = result
+    updateDisplay(String(result))
   } catch (error) {
-    displayScreen.value = 'Error'
+    updateDisplay('Error')
   }
 }
 
